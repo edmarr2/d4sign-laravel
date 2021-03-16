@@ -214,7 +214,3 @@ $webhook = $documents->webhookadd("{UUID-DOCUMENT}",$url);
 ## Documentação completa da API
 
 http://docapi.d4sign.com.br/
-
-## Dúvidas?
-
-Entre em contato com nossos desenvolvedores pelo e-mail suporte@d4sign.com.br
