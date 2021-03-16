@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="46b81869-4ac5-45cc-862c-6eac47572c77" name="Default Changelist" comment="" />
+    <list default="true" id="46b81869-4ac5-45cc-862c-6eac47572c77" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/d4sign.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/d4sign.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exceptions/WithoutCryptKeyException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/InvalidCryptKeyException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exceptions/WithoutTokenException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/InvalidTokenException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -121,6 +149,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1po2iPRrgjAUuwHpdpChsXMX9i9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -135,6 +164,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/Unit/Account" />
       <recent name="$PROJECT_DIR$/tests/Integration/Account" />
       <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$/tests/Tests/Unit" />
@@ -161,34 +191,46 @@
       <option name="presentableId" value="Default" />
       <updated>1615835250008</updated>
       <workItem from="1615835251132" duration="7335000" />
-      <workItem from="1615843203327" duration="13533000" />
+      <workItem from="1615843203327" duration="15838000" />
+      <workItem from="1615901904157" duration="5223000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="586" y="297" width="529" height="409" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615856653495">
+    <state x="586" y="297" width="529" height="409" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615856782763">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="586" y="297" width="529" height="409" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615856653495" />
-    <state x="674" y="275" width="311" height="448" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615854042111">
+    <state x="586" y="297" width="529" height="409" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615856782763" />
+    <state x="674" y="275" width="311" height="448" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615907103733">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="674" y="275" width="311" height="448" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615854042111" />
-    <state x="573" y="262" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615843865076">
+    <state x="674" y="275" width="311" height="448" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615907103733" />
+    <state x="573" y="262" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615904575777">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="573" y="262" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615843865076" />
+    <state x="573" y="262" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615904575776" />
     <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl" timestamp="1615848180206">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615848180206" />
-    <state x="730" y="441" width="742" height="569" key="NewPhpClassDialog" timestamp="1615856743838">
+    <state x="730" y="441" width="742" height="569" key="NewPhpClassDialog" timestamp="1615906280446">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="730" y="441" width="742" height="569" key="NewPhpClassDialog/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615856743838" />
+    <state x="730" y="441" width="742" height="569" key="NewPhpClassDialog/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615906280446" />
     <state x="658" y="426" width="354" height="150" key="NewPhpFileDialog" timestamp="1615856559410">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -197,21 +239,21 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="344" y="139" key="SettingsEditor/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615850416842" />
-    <state x="545" y="237" width="589" height="534" key="find.popup" timestamp="1615854054440">
+    <state x="545" y="237" width="589" height="534" key="find.popup" timestamp="1615902311709">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="545" y="237" width="589" height="534" key="find.popup/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615854054440" />
+    <state x="545" y="237" width="589" height="534" key="find.popup/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615902311709" />
     <state x="663" y="274" width="344" height="454" key="refactoring.ChangeSignatureDialog" timestamp="1615847881052">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="663" y="274" width="344" height="454" key="refactoring.ChangeSignatureDialog/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615847881052" />
-    <state x="504" y="230" key="run.anything.popup" timestamp="1615853209035">
+    <state x="504" y="230" key="run.anything.popup" timestamp="1615858962917">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="504" y="230" key="run.anything.popup/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615853209035" />
-    <state x="504" y="152" width="672" height="676" key="search.everywhere.popup" timestamp="1615843743977">
+    <state x="504" y="230" key="run.anything.popup/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615858962917" />
+    <state x="504" y="152" width="672" height="676" key="search.everywhere.popup" timestamp="1615906218753">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="504" y="152" width="672" height="676" key="search.everywhere.popup/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615843743977" />
+    <state x="504" y="152" width="672" height="676" key="search.everywhere.popup/0.0.1680.1010/1680.0.1366.768@0.0.1680.1010" timestamp="1615906218753" />
   </component>
 </project>

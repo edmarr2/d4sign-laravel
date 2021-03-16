@@ -2,8 +2,8 @@
 
 namespace Edmarr2\D4sign\Services;
 
-use Edmarr2\D4sign\Exceptions\WithoutCryptKeyException;
-use Edmarr2\D4sign\Exceptions\WithoutTokenException;
+use Edmarr2\D4sign\Exceptions\InvalidCryptKeyException;
+use Edmarr2\D4sign\Exceptions\InvalidTokenException;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -14,11 +14,11 @@ abstract class Client
     public function __construct()
     {
         if (!config('d4sign.token_api')) {
-            throw new WithoutTokenException();
+            throw new InvalidTokenException();
         }
 
         if (!config('d4sign.crypt_key')) {
-            throw new WithoutCryptKeyException();
+            throw new InvalidCryptKeyException();
         }
         $this->client = new GuzzleClient([
             'base_uri' => config('d4sign.base_uri'),

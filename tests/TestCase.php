@@ -28,8 +28,8 @@ abstract class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('d4sign.base_uri', 'http://demo.d4sign.com.br/api/v1/');
-        $app['config']->set('d4sign.TOKEN_API', 'live_31c149f86b6fc843dc36a7f459ff238ca8cb7c534caba41e9b4a3154bcde7dfe');
-        $app['config']->set('d4sign.CRYPT_KEY.orderBy', 'live_crypt_xVCUzsXUWaN0XL2TgSAWZo9UTES0u4DP');
+        $app['config']->set('d4sign.base_uri');
+        $app['config']->set('d4sign.TOKEN_API');
+        $app['config']->set('d4sign.CRYPT_KEY.orderBy');
     }
 }
