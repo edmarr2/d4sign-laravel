@@ -6,8 +6,8 @@ class Templates extends Client
 {
     public function find($templateKey = '')
     {
-        return $this->client->request("/templates", [
-            'id_template'=> $templateKey
+        return $this->post('templates', [
+            'id_template'=> json_encode($templateKey)
         ]);
     }
 }

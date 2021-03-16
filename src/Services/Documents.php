@@ -7,62 +7,62 @@ class Documents extends Client
 {
     public function changepasswordcode($documentKey, $keySigner, string $email, $code)
     {
-        return $this->post('/documents/' . $documentKey . '/changepasswordcode', [
-            'email' => $email,
-            'password-code' => $code,
-            'key-signer' => $keySigner
+        return $this->post('documents/' . $documentKey . '/changepasswordcode', [
+            'email' => json_encode($email),
+            'password-code' => json_encode($code),
+            'key-signer' => json_encode($keySigner)
         ]);
     }
 
     public function changesmsnumber($documentKey, $keySigner, string $email, string $sms)
     {
-        return $this->post('/documents/' . $documentKey . '/changesmsnumber', [
-            'email' => $email,
-            'sms-number' => $sms,
-            'key-signer' => $keySigner
+        return $this->post('documents/' . $documentKey . '/changesmsnumber', [
+            'email' => json_encode($email),
+            'sms-number' => json_encode($sms),
+            'key-signer' => json_encode($keySigner)
         ]);
     }
 
 
     public function removeemail($documentKey, $email, $key)
     {
-        return $this->post('/documents/' . $documentKey . '/removeemaillist',  [
-            'email-signer' => $email,
-            'key-signer' => $key
+        return $this->post('documents/' . $documentKey . '/removeemaillist',  [
+            'email-signer' => json_encode($email),
+            'key-signer' => json_encode($key)
         ]);
     }
 
     public function changeemail($documentKey, $email_before, $email_after,$key='')
     {
-        return $this->post('/documents/' . $documentKey . '/changeemail', [
-            'email-before' => $email_before,
-            'email-after' => $email_after,
-            'key-signer' => $key
+        return $this->post('documents/' . $documentKey . '/changeemail', [
+            'email-before' => json_encode($email_before),
+            'email-after' => json_encode($email_after),
+            'key-signer' => json_encode($key)
         ]);
     }
 
     public function find($documentKey = '', $page = 1)
     {
-        return $this->get('/documents/' . $documentKey, [
+        return $this->get('documents/' . $documentKey, [
             'pg' => $page
         ]);
     }
 
     public function listsignatures($documentKey)
     {
-        return $this->get('/documents/' . $documentKey . '/list');
+        return $this->get('documents/' . $documentKey . '/list');
     }
 
     public function status($status, $page = 1)
     {
-        return $this->get('/documents/' . $status . '/status', [
+        return $this->get('documents/' . $status . '/status', [
             'pg' => $page
         ]);
     }
 
     public function safe($safeKey, $uuid_folder = '', $page = 1)
     {
-        return $this->get('/documents/' . $safeKey . '/safe/' . $uuid_folder, [
+        return $this->get('documents/' . $safeKey . '/safe/' . $uuid_folder, [
             'pg' => $page
         ]);
     }
@@ -75,17 +75,17 @@ class Documents extends Client
 
     public function uploadbinary(string $uuid_safe, $base64_binary, $mime_type, $name, $uuid_folder = '')
     {
-        return $this->post('/documents/' . $uuid_safe . '/uploadbinary', [
+        return $this->post('documents/' . $uuid_safe . '/uploadbinary', [
             'base64_binary_file' => $base64_binary,
             'mime_type' => $mime_type,
             'name' => $name,
-            'uuid_folder' => $uuid_folder
+            'uuid_folder' => json_encode($uuid_folder)
         ]);
     }
 
     public function uploadslavebinary(string $uuid_master, $base64_binary, $mime_type, $name)
     {
-        return $this->post('/documents/' . $uuid_master . '/uploadslavebinary', [
+        return $this->post('documents/' . $uuid_master . '/uploadslavebinary', [
             'base64_binary_file' => $base64_binary,
             'mime_type'=>$mime_type,
             'name'=>$name
@@ -100,42 +100,42 @@ class Documents extends Client
 
     public function cancel($documentKey, $comment = '')
     {
-        return $this->post('/documents/' .$documentKey . '/cancel', [
-            'comment' => $comment
+        return $this->post('documents/' .$documentKey . '/cancel', [
+            'comment' => json_encode($comment)
         ]);
     }
 
     public function createList($documentKey, $signers)
     {
-        return $this->post('/documents/' . $documentKey . '/createlist', [
-            'signers' => $signers
+        return $this->post('documents/' . $documentKey . '/createlist', [
+            'signers' => json_encode($signers)
         ]);
     }
 
     public function makedocumentbytemplate($documentKey, $name_document, $templates, $uuid_folder = '')
     {
-        return $this->post('/documents/' . $documentKey . '/makedocumentbytemplate', [
-            'templates' =>  $templates,
-            'name_document'=> $name_document,
-            'uuid_folder'=> $uuid_folder
+        return $this->post('documents/' . $documentKey . '/makedocumentbytemplate', [
+            'templates' =>  json_encode($templates),
+            'name_document'=> json_encode($name_document),
+            'uuid_folder'=> json_encode($uuid_folder)
         ]);
     }
 
     public function webhookadd($documentKey, $url)
     {
-        return $this->post('/documents/' . $documentKey . '/webhooks', [
-            'url' => $url
+        return $this->post('documents/' . $documentKey . '/webhooks', [
+            'url' => json_encode($url)
         ]);
     }
 
     public function webhooklist($documentKey)
     {
-        return $this->client->request("/documents/$documentKey/webhooks", "GET", null, 200);
+        return $this->get("documents/$documentKey/webhooks");
     }
 
     public function sendToSigner($documentKey, $message = '', $workflow = '0', $skip_email = false)
     {
-        return $this->post('/documents/' . $documentKey . '/sendtosigner', [
+        return $this->post('documents/' . $documentKey . '/sendtosigner', [
             'message' => json_encode($message),
             'workflow' => json_encode($workflow),
             'skip_email' => json_encode($skip_email)
@@ -144,18 +144,18 @@ class Documents extends Client
 
     public function addinfo($documentKey, $email = '', $display_name = '', $documentation = '', $birthday = '', $key='')
     {
-        return $this->post('/documents/' . $documentKey . '/addinfo', [
-            'key_signer' => $key,
-            'email' => $email,
-            'display_name' => $display_name,
-            'documentation' => $documentation,
-            'birthday' => $birthday
+        return $this->post('documents/' . $documentKey . '/addinfo', [
+            'key_signer' => json_encode($key),
+            'email' => json_encode($email),
+            'display_name' => json_encode($display_name),
+            'documentation' => json_encode($documentation),
+            'birthday' => json_encode($birthday)
         ]);
     }
 
     public function resend($documentKey, $email, $key='')
     {
-        return $this->post('/documents/' . $documentKey . '/resend', [
+        return $this->post('documents/' . $documentKey . '/resend', [
             "email" => json_encode($email),
             "key_signer" => json_encode($key)
         ]);
@@ -163,8 +163,8 @@ class Documents extends Client
 
     public function getfileurl($documentKey, $type)
     {
-        return $this->post('/documents/' . $documentKey . '/download', [
-            'type' => $type
+        return $this->post('documents/' . $documentKey . '/download', [
+            'type' => json_encode($type)
         ]);
     }
 
@@ -173,9 +173,9 @@ class Documents extends Client
     {
         $f = $this->_getCurlFile($filePath);
 
-        return $this->post('/documents/' . $uuid_safe . '/upload', [
+        return $this->post('documents/' . $uuid_safe . '/upload', [
             'file' => $f,
-            'uuid_folder'=> $uuid_folder
+            'uuid_folder'=> json_encode($uuid_folder)
         ]);
 
     }
@@ -184,7 +184,7 @@ class Documents extends Client
     {
         $f = $this->_getCurlFile($filePath);
 
-        return $this->client->request('/documents/' . $uuid_original_file . '/uploadslave', ['file' => $f]);
+        return $this->post('documents/' . $uuid_original_file . '/uploadslave', ['file' => $f]);
     }
 
     private function _getCurlFile($filename, $contentType='', $postname='')
@@ -214,11 +214,11 @@ class Documents extends Client
 
     public function uploadhash(string $uuid_safe, $sha256, $sha512, $name, $uuid_folder = '')
     {
-        return $this->post('/documents/' . $uuid_safe . '/uploadhash', [
+        return $this->post('documents/' . $uuid_safe . '/uploadhash', [
             'sha256' => $sha256,
             'sha512' => $sha512,
             'name' => $name,
-            'uuid_folder' => $uuid_folder
+            'uuid_folder' => json_encode($uuid_folder)
         ]);
 
     }

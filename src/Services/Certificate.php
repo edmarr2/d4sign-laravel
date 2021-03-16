@@ -6,12 +6,12 @@ class Certificate extends Client
 {
     public function find(string $uuid_arquivo, $key_signer)
     {
-        return $this->post('/certificate/' . $uuid_arquivo . '/list', ['key_signer' => $key_signer]);
+        return $this->post('certificate/' . $uuid_arquivo . '/list', ['key_signer' => $key_signer]);
     }
 
     public function add(string $uuid_arquivo, int $key_signer, $document_type, $document_number = '', $pades='')
     {
-        return $this->post('/certificate/' . $uuid_arquivo . '/add', [
+        return $this->post('certificate/' . $uuid_arquivo . '/add', [
             'key_signer' => $key_signer,
             'document_type' => $document_type,
             'pades' => $pades,

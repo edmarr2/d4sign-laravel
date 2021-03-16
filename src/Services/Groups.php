@@ -7,6 +7,6 @@ class Groups extends Client
 {
     public function find($uuid_cofre)
     {
-        return $this->get('/groups/' . $uuid_cofre);
+        return $this->get('groups/' . $uuid_cofre);
     }
 }

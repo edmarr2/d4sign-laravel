@@ -6,8 +6,6 @@ class Batches extends Client
 {
     public function create(array $keys)
     {
-        return $this->post('/batches/', [
-            'keys' => $keys
-        ]);
+        return $this->post('batches', ['keys' => json_encode($keys)]);
     }
 }

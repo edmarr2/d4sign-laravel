@@ -12,7 +12,8 @@
     "require": {
         "guzzlehttp/guzzle": "^7.0",
         "illuminate/support": "^8.0",
-        "orchestra/testbench": "^6.7"
+        "orchestra/testbench": "^6.7",
+      "ext-json": "*"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

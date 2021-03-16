@@ -6,6 +6,6 @@ class Safes extends Client
 {
     public function find($safeKey = '')
     {
-        return $this->get('/safes/' . $safeKey);
+        return $this->get('safes/' . $safeKey);
     }
 }

@@ -10,7 +10,7 @@ class AccountTest extends TestCase
     public function testBalanceTest()
     {
         $accountService = new Account();
-        $this->assertJson($accountService->balance());
-        $this->assertEquals('{"credit":"3","sent":0,"used_balance":"0\/3"}',$accountService->balance());
+        self::assertJson($accountService->balance());
+        self::assertEquals('{"credit":"3","sent":0,"used_balance":"0\/3"}', $accountService->balance());
     }
 }
