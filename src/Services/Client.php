@@ -5,7 +5,6 @@ namespace Edmarr2\D4sign\Services;
 use Edmarr2\D4sign\Exceptions\InvalidCryptKeyException;
 use Edmarr2\D4sign\Exceptions\InvalidTokenException;
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\GuzzleException;
 
 abstract class Client
 {
@@ -32,25 +31,21 @@ abstract class Client
 
     public function get(string $url, array $query = [])
     {
-        try {
-            return $this->client->get($url, $query)->getBody()->getContents();
-        } catch (GuzzleException $e) {
-            return $e->getMessage();
-        }
+        return $this->client->get($url, $query);
     }
 
     public function post(string $url, array $data = [])
     {
-        return $this->client->post($url, $data)->getBody()->getContents();
+        return $this->client->post($url, $data);
     }
 
     public function put(string $url, array $data)
     {
-        return $this->client->put($url, $data)->getBody()->getContents();
+        return $this->client->put($url, $data);
     }
 
     public function delete(string $url, array $data)
     {
-        return $this->client->delete($url, $data)->getBody()->getContents();
+        return $this->client->delete($url, $data);
     }
 }
