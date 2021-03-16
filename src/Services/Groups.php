@@ -1,17 +1,12 @@
 <?php
 
-namespace D4sign\Services;
+namespace Edmarr2\D4sign\Services;
 
-use D4sign\Client;
-use D4sign\Service;
 
-class Groups extends Service
+class Groups extends Client
 {
-	
-	public function find($uuid_cofre)
+    public function find($uuid_cofre)
     {
-        $data = array();
-        return $this->client->request("/groups/$uuid_cofre", "GET", $data, 200);
+        return $this->get('/groups/' . $uuid_cofre);
     }
-
 }

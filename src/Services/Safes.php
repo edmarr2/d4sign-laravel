@@ -1,17 +1,11 @@
 <?php
 
-namespace D4sign\Services;
+namespace Edmarr2\D4sign\Services;
 
-use D4sign\Client;
-use D4sign\Service;
-
-class Safes extends Service
+class Safes extends Client
 {
-	
-	public function find($safeKey = '')
+    public function find($safeKey = '')
     {
-        $data = array();
-        return $this->client->request("/safes/$safeKey", "GET", $data, 200);
+        return $this->get('/safes/' . $safeKey);
     }
-
 }

@@ -11,7 +11,8 @@
     "minimum-stability": "dev",
     "require": {
         "guzzlehttp/guzzle": "^7.0",
-        "illuminate/support": "^8.0"
+        "illuminate/support": "^8.0",
+        "orchestra/testbench": "^6.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -20,6 +21,11 @@
     "autoload": {
         "psr-4": {
             "Edmarr2\\D4sign\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Edmarr2\\D4sign\\Tests\\": "tests/"
         }
     },
     "extra": {

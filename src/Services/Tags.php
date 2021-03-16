@@ -1,31 +1,29 @@
 <?php
 
-namespace D4sign\Services;
+namespace Edmarr2\D4sign\Services;
 
-use D4sign\Client;
-use D4sign\Service;
-
-class Tags extends Service
+class Tags extends Client
 {
-	public function find($uuid_arquivo)
+    public function find($uuid_arquivo)
     {
-        $data = array();
-        return $this->client->request("/tags/$uuid_arquivo", "GET", $data, 200);
+        return $this->get('/tags/' . $uuid_arquivo);
     }
     public function add($uuid_arquivo, $tag)
     {
-    	$data = array("tag" => json_encode($tag));
-    	return $this->client->request("/tags/$uuid_arquivo/add", "POST", $data, 200);
+        return $this->post('/tags/' . $uuid_arquivo . '/add', [
+            'tag' => $tag
+        ]);
     }
     public function remove($uuid_arquivo, $tag)
     {
-        $data = array("tag" => json_encode($tag));
-        return $this->client->request("/tags/$uuid_arquivo/remove", "POST", $data, 200);
+        return $this->post('/tags/' . $uuid_arquivo . '/remove',[
+            'tag' => $tag
+        ]);
     }
     public function erase($uuid_arquivo, $tag)
     {
-        $data = array("tag" => json_encode($tag));
-        return $this->client->request("/tags/$uuid_arquivo/erase", "POST", $data, 200);
+        return $this->post("/tags/$uuid_arquivo/erase", [
+            'tag' => $tag
+        ]);
     }
-
 }

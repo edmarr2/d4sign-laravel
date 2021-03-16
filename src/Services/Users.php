@@ -1,31 +1,29 @@
 <?php
 
-namespace D4sign\Services;
+namespace Edmarr2\D4sign\Services;
 
-use D4sign\Client;
-use D4sign\Service;
-
-class Users extends Service
+class Users extends Client
 {
-	
     public function listall()
     {
-        $data = array();
-        return $this->client->request("/users/list", "GET", $data, 200);
+        return $this->get('/users/list');
     }
     public function check($email)
     {
-        $data = array("email_user" => json_encode($email));
-        return $this->client->request("/users/check", "POST", $data, 200);
+        return $this->post('/users/check', [
+            'email_user' => $email
+        ]);
     }
     public function block($email)
     {
-        $data = array("email_user" => json_encode($email));
-        return $this->client->request("/users/block", "POST", $data, 200);
+        return $this->post('/users/block', [
+            'email_user' => $email
+        ]);
     }
     public function unblock($email)
     {
-        $data = array("email_user" => json_encode($email));
-        return $this->client->request("/users/unblock", "POST", $data, 200);
+        return $this->post('/users/unblock',[
+            'email_user' => $email
+        ]);
     }
 }

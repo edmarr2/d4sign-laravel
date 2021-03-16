@@ -6,6 +6,6 @@ class Account extends Client
 {
     public function balance()
     {
-        return $this->get('/account/balance');
+        return $this->get('account/balance');
     }
 }
