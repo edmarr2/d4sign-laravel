@@ -24,11 +24,6 @@
             "Edmarr2\\D4sign\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Edmarr2\\D4sign\\Tests\\": "tests/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
