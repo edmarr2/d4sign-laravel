@@ -11,12 +11,7 @@
     "require": {
         "guzzlehttp/guzzle": "^6.0|^7.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
-        "orchestra/testbench": "^6.7",
         "ext-json": "*"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-master",
-        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
