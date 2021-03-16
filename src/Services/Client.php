@@ -41,28 +41,16 @@ abstract class Client
 
     public function post(string $url, array $data = [])
     {
-        try {
-            return $this->client->post($url, $data)->getBody()->getContents();
-        } catch (GuzzleException $e) {
-            return $e->getMessage();
-        }
+        return $this->client->post($url, $data)->getBody()->getContents();
     }
 
     public function put(string $url, array $data)
     {
-        try {
-            return $this->client->put($url, $data)->getBody()->getContents();
-        } catch (GuzzleException $e) {
-            return $e->getMessage();
-        }
+        return $this->client->put($url, $data)->getBody()->getContents();
     }
 
     public function delete(string $url, array $data)
     {
-        try {
-            return $this->client->delete($url, $data)->getBody()->getContents();
-        } catch (GuzzleException $e) {
-            return $e->getMessage();
-        }
+        return $this->client->delete($url, $data)->getBody()->getContents();
     }
 }
