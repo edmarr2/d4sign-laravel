@@ -36,10 +36,10 @@ CRYPT_KEY = crypt
 Este objeto retornará TODOS os documentos da sua conta.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
-$docs = $documents->find();
+$d4sign = new D4sign();
+$docs = $d4sign->documents->find();
 ```
 
 ### Listar um documento específico
@@ -47,21 +47,28 @@ $docs = $documents->find();
 Esse objeto retornará apenas o documento solicitado.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
-$docs = $documents->find("{UUID-DOCUMENT}");
+$d4sign = new D4sign();
+$docs = $d4sign->documents->find("{UUID-DOCUMENT}");
 ```
 
 ### Listar TODOS os documentos de um cofre
+Para simplificar a requisição foi pensado em instanciar uma classe
+```php
+use Edmarr2\D4sign\Services\D4sign;
+
+$d4sign = new D4sign();
+$docs = $d4sign->documents->safe("{UUID-SAFE}");
+```
 
 Esse objeto retornará todos os documentos que estiverem associados ao cofre informado.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
-$docs = $documents->safe("{UUID-SAFE}");
+$d4sign = new D4sign();
+$docs = $d4sign->documents->safe("{UUID-SAFE}");
 ```
 
 ### Listar TODOS os documentos de uma fase
@@ -69,10 +76,10 @@ $docs = $documents->safe("{UUID-SAFE}");
 Esse objeto retornará todos os documentos que estiverem na fase informada.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
-$docs = $documents->status("{ID-FASE}");
+$d4sign = new D4sign();
+$docs = $d4sign->documents->status("{ID-FASE}");
 ```
 
 ID 1 - Processando
@@ -94,11 +101,11 @@ Após o processamento um preview será gerado. O processamento será realizado e
 Todos os documentos ficam armazenados em COFRES criptografados, ou seja, o parâmetro UUID-SAFE é obrigatório e determina em qual cofre o documento ficará armazenado.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
+$d4sign = new D4sign();
 $path_file = '/pasta/arquivo.pdf';
-$id_doc = $documents->upload('{UUID-SAFE}', $path_file);
+$id_doc = $d4sign->documents->upload('{UUID-SAFE}', $path_file);
 ```
 
 ### Cadastrar signatários
@@ -106,15 +113,15 @@ $id_doc = $documents->upload('{UUID-SAFE}', $path_file);
 Esse objeto realizará o cadastro dos signatários do documento, ou seja, quais pessoas precisam assinar esse documento.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
+$d4sign = new D4sign();
 $signers = [
     ["email" => "email1@dominio.com", "act" => '1', "foreign" => '0', "certificadoicpbr" => '0', "assinatura_presencial" => '0', "embed_methodauth" => 'email', "embed_smsnumber" => ''],
     ["email" => "email2@dominio.com", "act" => '1', "foreign" => '0', "certificadoicpbr" => '0',"assinatura_presencial" => '0', "embed_methodauth" => 'sms', "embed_smsnumber" => '+5511953020202']
 ];
 
-$return = $documents->createList("{UUID-DOCUMENT}", $signers);
+$return = $d4sign->documents->createList("{UUID-DOCUMENT}", $signers);
 ```
 
 ### Listar signatários de um documento
@@ -122,10 +129,10 @@ $return = $documents->createList("{UUID-DOCUMENT}", $signers);
 Esse objeto retornará todos os signatários de um documento.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
-$docs = $documents->listsignatures("{UUID-DOCUMENT}");
+$d4sign = new D4sign();
+$docs = $d4sign->documents->listsignatures("{UUID-DOCUMENT}");
 ```
 
 ### Enviar um documento para assinatura
@@ -133,14 +140,14 @@ $docs = $documents->listsignatures("{UUID-DOCUMENT}");
 Esse objeto enviará o documento para assinatura, ou seja, o documento entrará na fase 'Aguardando assinaturas', onde, a partir dessa fase, os signatários poderão assinar os documentos.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
+$d4sign = new D4sign();
 $message = 'Prezados, segue o contrato eletrônico para assinatura.';
 $workflow = 0; //Todos podem assinar ao mesmo tempo;
 $skip_email = 1; //Não disparar email com link de assinatura (usando EMBED ou Assinatura Presencial);
 
-$doc = $documents->sendToSigner("{UUID-DOCUMENT}",$message, $skip_email, $workflow);
+$doc = $d4sign->documents->sendToSigner("{UUID-DOCUMENT}",$message, $skip_email, $workflow);
 ```
 
 ### Cancelar um documento
@@ -148,10 +155,10 @@ $doc = $documents->sendToSigner("{UUID-DOCUMENT}",$message, $skip_email, $workfl
 Esse objeto irá cancelar o documento.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
-$docs = $documents->cancel("{UUID-DOCUMENT}");
+$d4sign = new D4sign();
+$docs = $d4sign->documents->cancel("{UUID-DOCUMENT}");
 ```
 
 ### Reenviar link de assinatura
@@ -159,11 +166,11 @@ $docs = $documents->cancel("{UUID-DOCUMENT}");
 Esse objeto irá reenviar o link de assinatura para o signatário.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
+$d4sign = new D4sign();
 $email = 'email@dominio.com';
-$return = $documents->resend('{UUID-DOCUMENT}', $email);
+$return = $d4sign->documents->resend('{UUID-DOCUMENT}', $email);
 ```
 
 ### Realizar o DOWNLOAD de um documento
@@ -171,11 +178,11 @@ $return = $documents->resend('{UUID-DOCUMENT}', $email);
 Esse objeto irá disponibilizar um link para download do documento.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
+$d4sign = new D4sign();
 //Você poderá fazer download do ZIP ou apenas do PDF setando o último parametro.
-$url_final = $documents->getfileurl('{UUID-DOCUMENT}','zip');
+$url_final = $d4sign->documents->getfileurl('{UUID-DOCUMENT}','zip');
 //print_r($url_final);
 
 $arquivo = file_get_contents($url_final->url);
@@ -193,10 +200,10 @@ echo $arquivo;
 Esse objeto irá retornar o webhook cadastrado no documento.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
-$webhook = $documents->webhooklist("{UUID-DOCUMENT}");
+$d4sign = new D4sign();
+$webhook = $d4sign->documents->webhooklist("{UUID-DOCUMENT}");
 ```
 
 ### Cadastrar Webhook em um documento
@@ -204,11 +211,11 @@ $webhook = $documents->webhooklist("{UUID-DOCUMENT}");
 Esse objeto irá cadastrar o webhook no documento.
 
 ```php
-use Edmarr2\D4sign\Services\Documents;
+use Edmarr2\D4sign\Services\D4sign;
 
-$documents = new Documents();
+$d4sign = new D4sign();
 $url = 'http://seudominio.com.br/post.php';
-$webhook = $documents->webhookadd("{UUID-DOCUMENT}",$url);
+$webhook = $d4sign->documents->webhookadd("{UUID-DOCUMENT}",$url);
 ```
 
 ## Documentação completa da API
