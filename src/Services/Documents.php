@@ -130,7 +130,7 @@ class Documents extends Client
 
     public function webhooklist($documentKey)
     {
-        return $this->get("documents/$documentKey/webhooks");
+        return $this->get('documents/' . $documentKey . '/webhooks');
     }
 
     public function sendToSigner($documentKey, $message = '', $workflow = '0', $skip_email = false)
