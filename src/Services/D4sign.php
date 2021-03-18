@@ -16,28 +16,18 @@ class D4sign
     public $users;
     public $watcher;
 
-    public function __construct(Account $account,
-                                Batches $batches,
-                                Certificate $certificate,
-                                Documents $documents,
-                                Folders $folders,
-                                Groups $groups,
-                                Safes $safes,
-                                Tags $tags,
-                                Templates $templates,
-                                Users $users,
-                                Watcher $watcher)
+    public function __construct()
     {
-        $this->account = $account;
-        $this->batches = $batches;
-        $this->certificate = $certificate;
-        $this->documents = $documents;
-        $this->folders = $folders;
-        $this->groups = $groups;
-        $this->safes = $safes;
-        $this->tags = $tags;
-        $this->templates = $templates;
-        $this->users = $users;
-        $this->watcher = $watcher;
+        $this->account = new Account();
+        $this->batches = new Batches();
+        $this->certificate = new Certificate();
+        $this->documents = new Documents();
+        $this->folders = new Folders();
+        $this->groups = new Groups();
+        $this->safes = new Safes();
+        $this->tags = new Tags();
+        $this->templates = new Templates();
+        $this->users = new Users();
+        $this->watcher = new Watcher();
     }
 }
