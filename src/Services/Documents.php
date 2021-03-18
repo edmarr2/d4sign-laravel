@@ -14,7 +14,7 @@ class Documents extends Client
         ]);
     }
 
-    public function changesMsNumber($documentKey, $keySigner, string $email, string $sms)
+    public function changeSmsNumber($documentKey, $keySigner, string $email, string $sms)
     {
         return $this->post('documents/' . $documentKey . '/changesmsnumber', [
             'email' => json_encode($email),
