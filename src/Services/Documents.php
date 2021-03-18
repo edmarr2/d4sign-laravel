@@ -5,7 +5,7 @@ namespace Edmarr2\D4sign\Services;
 
 class Documents extends Client
 {
-    public function changepasswordcode($documentKey, $keySigner, string $email, $code)
+    public function changePasswordCode($documentKey, $keySigner, string $email, $code)
     {
         return $this->post('documents/' . $documentKey . '/changepasswordcode', [
             'email' => json_encode($email),
@@ -14,7 +14,7 @@ class Documents extends Client
         ]);
     }
 
-    public function changesmsnumber($documentKey, $keySigner, string $email, string $sms)
+    public function changesMsNumber($documentKey, $keySigner, string $email, string $sms)
     {
         return $this->post('documents/' . $documentKey . '/changesmsnumber', [
             'email' => json_encode($email),
@@ -24,7 +24,7 @@ class Documents extends Client
     }
 
 
-    public function removeemail($documentKey, $email, $key)
+    public function removeEmail($documentKey, $email, $key)
     {
         return $this->post('documents/' . $documentKey . '/removeemaillist',  [
             'email-signer' => json_encode($email),
@@ -32,7 +32,7 @@ class Documents extends Client
         ]);
     }
 
-    public function changeemail($documentKey, $email_before, $email_after,$key='')
+    public function changeEmail($documentKey, $email_before, $email_after,$key='')
     {
         return $this->post('documents/' . $documentKey . '/changeemail', [
             'email-before' => json_encode($email_before),
@@ -48,7 +48,7 @@ class Documents extends Client
         ]);
     }
 
-    public function listsignatures($documentKey)
+    public function listSignatures($documentKey)
     {
         return $this->get('documents/' . $documentKey . '/list');
     }
@@ -73,7 +73,7 @@ class Documents extends Client
     }
 
 
-    public function uploadbinary(string $uuid_safe, $base64_binary, $mime_type, $name, $uuid_folder = '')
+    public function uploadBinary(string $uuid_safe, $base64_binary, $mime_type, $name, $uuid_folder = '')
     {
         return $this->post('documents/' . $uuid_safe . '/uploadbinary', [
             'base64_binary_file' => $base64_binary,
@@ -83,19 +83,18 @@ class Documents extends Client
         ]);
     }
 
-    public function uploadslavebinary(string $uuid_master, $base64_binary, $mime_type, $name)
+    public function uploadSlaveBinary(string $uuid_master, $base64_binary, $mime_type, $name)
     {
         return $this->post('documents/' . $uuid_master . '/uploadslavebinary', [
             'base64_binary_file' => $base64_binary,
             'mime_type'=>$mime_type,
             'name'=>$name
         ]);
-
     }
 
-    public function uploadslave(string $uuid_original_file, $filePath)
+    public function uploadSlave(string $uuid_original_file, $filePath)
     {
-        return $this->_uploadslave($uuid_original_file, $filePath);
+        return $this->_uploadSlave($uuid_original_file, $filePath);
     }
 
     public function cancel($documentKey, $comment = '')
@@ -112,7 +111,7 @@ class Documents extends Client
         ]);
     }
 
-    public function makedocumentbytemplate($documentKey, $name_document, $templates, $uuid_folder = '')
+    public function makeDocumentByTemplate($documentKey, $name_document, $templates, $uuid_folder = '')
     {
         return $this->post('documents/' . $documentKey . '/makedocumentbytemplate', [
             'templates' =>  json_encode($templates),
@@ -121,14 +120,14 @@ class Documents extends Client
         ]);
     }
 
-    public function webhookadd($documentKey, $url)
+    public function webhookAdd($documentKey, $url)
     {
         return $this->post('documents/' . $documentKey . '/webhooks', [
             'url' => json_encode($url)
         ]);
     }
 
-    public function webhooklist($documentKey)
+    public function webhookList($documentKey)
     {
         return $this->get('documents/' . $documentKey . '/webhooks');
     }
@@ -142,7 +141,7 @@ class Documents extends Client
         ]);
     }
 
-    public function addinfo($documentKey, $email = '', $display_name = '', $documentation = '', $birthday = '', $key='')
+    public function addInfo($documentKey, $email = '', $display_name = '', $documentation = '', $birthday = '', $key='')
     {
         return $this->post('documents/' . $documentKey . '/addinfo', [
             'key_signer' => json_encode($key),
@@ -161,7 +160,7 @@ class Documents extends Client
         ]);
     }
 
-    public function getfileurl($documentKey, $type)
+    public function getFileUrl($documentKey, $type)
     {
         return $this->post('documents/' . $documentKey . '/download', [
             'type' => json_encode($type)
@@ -180,7 +179,7 @@ class Documents extends Client
 
     }
 
-    private function _uploadslave($uuid_original_file, $filePath)
+    private function _uploadSlave($uuid_original_file, $filePath)
     {
         $f = $this->_getCurlFile($filePath);
 
@@ -212,7 +211,7 @@ class Documents extends Client
         return $value;
     }
 
-    public function uploadhash(string $uuid_safe, $sha256, $sha512, $name, $uuid_folder = '')
+    public function uploadHash(string $uuid_safe, $sha256, $sha512, $name, $uuid_folder = '')
     {
         return $this->post('documents/' . $uuid_safe . '/uploadhash', [
             'sha256' => $sha256,

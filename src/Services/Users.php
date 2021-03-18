@@ -4,7 +4,7 @@ namespace Edmarr2\D4sign\Services;
 
 class Users extends Client
 {
-    public function listall()
+    public function listAll()
     {
         return $this->get('users/list');
     }
