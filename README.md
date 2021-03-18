@@ -132,7 +132,7 @@ Esse objeto retornará todos os signatários de um documento.
 use Edmarr2\D4sign\Services\D4sign;
 
 $d4sign = new D4sign();
-$docs = $d4sign->documents->listsignatures("{UUID-DOCUMENT}");
+$docs = $d4sign->documents->listSignatures("{UUID-DOCUMENT}");
 ```
 
 ### Enviar um documento para assinatura
@@ -182,7 +182,7 @@ use Edmarr2\D4sign\Services\D4sign;
 
 $d4sign = new D4sign();
 //Você poderá fazer download do ZIP ou apenas do PDF setando o último parametro.
-$url_final = $d4sign->documents->getfileurl('{UUID-DOCUMENT}','zip');
+$url_final = $d4sign->documents->getFileUrl('{UUID-DOCUMENT}','zip');
 //print_r($url_final);
 
 $arquivo = file_get_contents($url_final->url);
@@ -203,7 +203,7 @@ Esse objeto irá retornar o webhook cadastrado no documento.
 use Edmarr2\D4sign\Services\D4sign;
 
 $d4sign = new D4sign();
-$webhook = $d4sign->documents->webhooklist("{UUID-DOCUMENT}");
+$webhook = $d4sign->documents->webhookList("{UUID-DOCUMENT}");
 ```
 
 ### Cadastrar Webhook em um documento
@@ -215,7 +215,7 @@ use Edmarr2\D4sign\Services\D4sign;
 
 $d4sign = new D4sign();
 $url = 'http://seudominio.com.br/post.php';
-$webhook = $d4sign->documents->webhookadd("{UUID-DOCUMENT}",$url);
+$webhook = $d4sign->documents->webhookAdd("{UUID-DOCUMENT}",$url);
 ```
 
 ## Documentação completa da API
