@@ -13,9 +13,18 @@
         "illuminate/support": "^6.0|^7.0|^8.0",
         "ext-json": "*"
     },
+    "require-dev": {
+        "orchestra/testbench": "^6.7",
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
             "Edmarr2\\D4sign\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Edmarr2\\D4sign\\Tests\\": "tests/"
         }
     },
     "extra": {
