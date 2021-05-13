@@ -6,7 +6,7 @@ SDK Não oficial de integração á API do serviço [D4Sign REST API](http://doc
 Abra o arquivo `composer.json` e insira a seguinte instrução
 ```
 "require": {
-    "edmarr2/d4sign-laravel": "dev-master"
+    "edmarr2/d4sign-laravel": "dev-main"
 }
 ``` 
 
