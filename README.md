@@ -3,23 +3,35 @@
 SDK Não oficial de integração á API do serviço [D4Sign REST API](http://docapi.d4sign.com.br/).
 
 # Instalação
+Abra o arquivo `composer.json` e insira a seguinte instrução
+```
+"require": {
+    "edmarr2/d4sign-laravel": "dev-master"
+}
+``` 
 
-Via composer, faça o seguinte comando: 
+
+Via composer, execute o seguinte comando: 
 
 ```shell script
 composer require edmarr2/d4sign-laravel
 ```
 
-# OBSERVAÇÃO
+# Criação do configurador
+```php artisan vendor:publish --tag=d4sign-config```
+
+# Configuração
+
 Coloque dentro do seu .env as seguintes variáveis:
 
-D4SIGN_BASE_URL = url
+D4SIGN_ENV = ``homologacao`` | `producao`
 
+- homologação, utiliza o endpoint de demonstração - sem validade jurídica
+- produção, utiliza o endpoint de produção - com validade jurídica.
 
-TOKEN_API = token
+D4SIGN_TOKEN_API = token
 
-
-CRYPT_KEY = crypt
+D4SIGN_CRYPT_KEY = crypt
 
 ## Passo a Passo
 
