@@ -5,7 +5,7 @@ namespace Edmarr2\D4sign\Services;
 
 class Documents extends Client
 {
-    public function changePasswordCode($documentKey, $keySigner, string $email, $code)
+    public function changePasswordCode($documentKey, $keySigner, $email, $code)
     {
         return $this->post('documents/' . $documentKey . '/changepasswordcode', [
             'email' => json_encode($email),
@@ -14,7 +14,7 @@ class Documents extends Client
         ]);
     }
 
-    public function changeSmsNumber($documentKey, $keySigner, string $email, string $sms)
+    public function changeSmsNumber($documentKey, $keySigner, $email, $sms)
     {
         return $this->post('documents/' . $documentKey . '/changesmsnumber', [
             'email' => json_encode($email),
@@ -67,13 +67,13 @@ class Documents extends Client
         ]);
     }
 
-    public function upload(string $uuid_safe, $filePath, $uuid_folder = '')
+    public function upload($uuid_safe, $filePath, $uuid_folder = '')
     {
         return $this->_upload($uuid_safe, $filePath, $uuid_folder);
     }
 
 
-    public function uploadBinary(string $uuid_safe, $base64_binary, $mime_type, $name, $uuid_folder = '')
+    public function uploadBinary($uuid_safe, $base64_binary, $mime_type, $name, $uuid_folder = '')
     {
         return $this->post('documents/' . $uuid_safe . '/uploadbinary', [
             'base64_binary_file' => $base64_binary,
@@ -83,7 +83,7 @@ class Documents extends Client
         ]);
     }
 
-    public function uploadSlaveBinary(string $uuid_master, $base64_binary, $mime_type, $name)
+    public function uploadSlaveBinary($uuid_master, $base64_binary, $mime_type, $name)
     {
         return $this->post('documents/' . $uuid_master . '/uploadslavebinary', [
             'base64_binary_file' => $base64_binary,
@@ -92,7 +92,7 @@ class Documents extends Client
         ]);
     }
 
-    public function uploadSlave(string $uuid_original_file, $filePath)
+    public function uploadSlave($uuid_original_file, $filePath)
     {
         return $this->_uploadSlave($uuid_original_file, $filePath);
     }
@@ -211,7 +211,7 @@ class Documents extends Client
         return $value;
     }
 
-    public function uploadHash(string $uuid_safe, $sha256, $sha512, $name, $uuid_folder = '')
+    public function uploadHash($uuid_safe, $sha256, $sha512, $name, $uuid_folder = '')
     {
         return $this->post('documents/' . $uuid_safe . '/uploadhash', [
             'sha256' => $sha256,
