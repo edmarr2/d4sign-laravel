@@ -8,9 +8,9 @@ abstract class Client
 {
     protected $client;
     
-    protected const ENV_PRODUCTION = 'https://secure.d4sign.com.br/api/v1';
+    protected const ENV_PRODUCTION = 'https://secure.d4sign.com.br/api/v1/';
     
-    protected const ENV_SANDBOX = 'http://demo.d4sign.com.br/api/v1';
+    protected const ENV_SANDBOX = 'http://demo.d4sign.com.br/api/v1/';
     
     public function __construct()
     {
