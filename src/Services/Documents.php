@@ -176,19 +176,21 @@ class Documents extends Client
      */
     private function _upload($uuid_safe, $filePath, $uuid_folder = '')
     {
-        $this->client->request('POST', 'documents/' . $uuid_safe . '/upload',[
-            'multipart' => [
-                [
-                    'name'     => 'file',
-                    'contents' => Psr7\Utils::tryFopen($filePath, 'r'),
-                    'headers'  => ['tokenAPI' => config('d4sign.token_api'), 'cryptKey' => config('d4sign.crypt_key')],
-                ],
-                [
-                    'name'     => 'uuid_folder',
-                    'contents' => $uuid_folder,
+        $this->client->request('POST',
+            'documents/' . $uuid_safe . '/upload',
+            [
+                'multipart' => [
+                    [
+                        'name'     => 'file',
+                        'contents' => Psr7\Utils::tryFopen($filePath, 'r'),
+                    ],
+                    [
+                        'name'     => 'uuid_folder',
+                        'contents' => $uuid_folder,
+                    ]
                 ]
             ]
-        ]);
+        );
 
     }
 
