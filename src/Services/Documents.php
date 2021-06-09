@@ -1,7 +1,7 @@
 <?php
 
 namespace Edmarr2\D4sign\Services;
-
+use GuzzleHttp\Psr7;
 
 class Documents extends Client
 {
@@ -69,6 +69,9 @@ class Documents extends Client
 
     public function upload($uuid_safe, $filePath, $uuid_folder = '')
     {
+        if (! $uuid_safe) {
+            return 'UUID Safe not set.';
+        }
         return $this->_upload($uuid_safe, $filePath, $uuid_folder);
     }
 
@@ -168,13 +171,23 @@ class Documents extends Client
     }
 
 
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     private function _upload($uuid_safe, $filePath, $uuid_folder = '')
     {
-        $f = $this->_getCurlFile($filePath);
-
-        return $this->post('documents/' . $uuid_safe . '/upload', [
-            'file' => $f,
-            'uuid_folder'=> json_encode($uuid_folder)
+        $this->client->request('POST', 'documents/' . $uuid_safe . '/upload',[
+            'multipart' => [
+                [
+                    'name'     => 'file',
+                    'contents' => Psr7\Utils::tryFopen($filePath, 'r'),
+                    'headers'  => ['tokenAPI' => config('d4sign.token_api'), 'cryptKey' => config('d4sign.crypt_key')],
+                ],
+                [
+                    'name'     => 'uuid_folder',
+                    'contents' => $uuid_folder,
+                ]
+            ]
         ]);
 
     }
@@ -194,7 +207,6 @@ class Documents extends Client
         {
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $finfo = finfo_file($finfo, $filename);
-
             return curl_file_create($filename, $finfo, basename($filename));
         }
 
@@ -207,7 +219,6 @@ class Documents extends Client
         }else{
             $value .= ';type=' . mime_content_type($filename);
         }
-
         return $value;
     }
 
