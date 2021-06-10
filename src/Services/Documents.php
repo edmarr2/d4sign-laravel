@@ -1,6 +1,7 @@
 <?php
 
 namespace Edmarr2\D4sign\Services;
+
 use GuzzleHttp\Psr7;
 
 class Documents extends Client
@@ -26,13 +27,13 @@ class Documents extends Client
 
     public function removeEmail($documentKey, $email, $key)
     {
-        return $this->post('documents/' . $documentKey . '/removeemaillist',  [
+        return $this->post('documents/' . $documentKey . '/removeemaillist', [
             'email-signer' => json_encode($email),
             'key-signer' => json_encode($key)
         ]);
     }
 
-    public function changeEmail($documentKey, $email_before, $email_after,$key='')
+    public function changeEmail($documentKey, $email_before, $email_after, $key='')
     {
         return $this->post('documents/' . $documentKey . '/changeemail', [
             'email-before' => json_encode($email_before),
@@ -176,7 +177,8 @@ class Documents extends Client
      */
     private function _upload($uuid_safe, $filePath, $uuid_folder = '')
     {
-        $this->client->request('POST',
+        $this->client->request(
+            'POST',
             'documents/' . $uuid_safe . '/upload',
             [
                 'multipart' => [
@@ -191,7 +193,6 @@ class Documents extends Client
                 ]
             ]
         );
-
     }
 
     private function _uploadSlave($uuid_original_file, $filePath)
@@ -205,8 +206,7 @@ class Documents extends Client
     {
         // PHP 5.5 introduced a CurlFile object that deprecates the old @filename syntax
         // See: https://wiki.php.net/rfc/curl-file-upload
-        if (function_exists('curl_file_create'))
-        {
+        if (function_exists('curl_file_create')) {
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $finfo = finfo_file($finfo, $filename);
             return curl_file_create($filename, $finfo, basename($filename));
@@ -215,10 +215,9 @@ class Documents extends Client
         // Use the old style if using an older version of PHP
         $postname = $postname or $filename;
         $value = "@{$filename};filename=" . $postname;
-        if ($contentType)
-        {
+        if ($contentType) {
             $value .= ';type=' . $contentType;
-        }else{
+        } else {
             $value .= ';type=' . mime_content_type($filename);
         }
         return $value;
@@ -232,6 +231,5 @@ class Documents extends Client
             'name' => $name,
             'uuid_folder' => json_encode($uuid_folder)
         ]);
-
     }
 }
