@@ -1,7 +1,6 @@
 <?php
 namespace Edmarr2\D4sign\Services;
 
-
 class D4sign
 {
     public $account;
@@ -27,7 +26,8 @@ class D4sign
         Tags $tags,
         Templates $templates,
         Users $users,
-        Watcher $watcher)
+        Watcher $watcher
+    )
     {
         $this->account = $account;
         $this->batches = $batches;

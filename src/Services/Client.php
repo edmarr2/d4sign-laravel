@@ -16,7 +16,7 @@ abstract class Client
     {
         $baseUri = config('d4sign.mode') === 'production' ? self::ENV_PRODUCTION : self::ENV_SANDBOX;
     
-            $this->client = new GuzzleClient(
+        $this->client = new GuzzleClient(
             [
                 'base_uri' => $baseUri,
                 'headers' => [

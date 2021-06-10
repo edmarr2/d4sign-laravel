@@ -16,7 +16,7 @@ class Tags extends Client
     }
     public function remove($uuid_arquivo, $tag)
     {
-        return $this->post('tags/' . $uuid_arquivo . '/remove',[
+        return $this->post('tags/' . $uuid_arquivo . '/remove', [
             'tag' => json_encode($tag)
         ]);
     }
