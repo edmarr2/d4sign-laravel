@@ -22,7 +22,7 @@ class Users extends Client
     }
     public function unblock($email)
     {
-        return $this->post('users/unblock',[
+        return $this->post('users/unblock', [
             'email_user' => json_encode($email)
         ]);
     }
