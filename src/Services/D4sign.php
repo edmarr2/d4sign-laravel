@@ -1,4 +1,5 @@
 <?php
+
 namespace Edmarr2\D4sign\Services;
 
 class D4sign
@@ -27,61 +28,70 @@ class D4sign
         Templates $templates,
         Users $users,
         Watcher $watcher
-    )
-    {
-        $this->account = $account;
-        $this->batches = $batches;
+    ) {
+        $this->account     = $account;
+        $this->batches     = $batches;
         $this->certificate = $certificate;
-        $this->documents = $documents;
-        $this->folders = $folders;
-        $this->groups = $groups;
-        $this->safes = $safes;
-        $this->tags = $tags;
-        $this->templates = $templates;
-        $this->users = $users;
-        $this->watcher = $watcher;
+        $this->documents   = $documents;
+        $this->folders     = $folders;
+        $this->groups      = $groups;
+        $this->safes       = $safes;
+        $this->tags        = $tags;
+        $this->templates   = $templates;
+        $this->users       = $users;
+        $this->watcher     = $watcher;
     }
 
     public function account()
     {
         return $this->account;
     }
+
     public function batches()
     {
         return $this->batches;
     }
+
     public function certificate()
     {
         return $this->certificate;
     }
+
     public function documents()
     {
         return $this->documents;
     }
+
     public function folders()
     {
         return $this->folders;
     }
+
     public function groups()
     {
         return $this->groups;
     }
+
     public function safes()
     {
         return $this->safes;
     }
+
     public function tags()
     {
         return $this->tags;
     }
+
     public function templates()
     {
         return $this->templates;
     }
+
     public function users()
     {
         return $this->users;
     }
+
     public function watcher()
     {
         return $this->watcher;

@@ -4,8 +4,13 @@ namespace Edmarr2\D4sign\Services;
 
 class Groups extends Client
 {
-    public function find($uuid_cofre)
+    /**
+     * @param $uuidSafe
+     *
+     * @return mixed
+     */
+    public function find($uuidSafe)
     {
-        return $this->get('groups/' . $uuid_cofre);
+        return $this->get('groups/' . $uuidSafe);
     }
 }
