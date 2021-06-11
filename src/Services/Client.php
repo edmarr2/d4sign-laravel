@@ -17,7 +17,7 @@ abstract class Client
 
     public function __construct()
     {
-        $this->client = new GuzzleHttp\Client(
+        $this->client = new \GuzzleHttp\Client(
             [
                 'base_uri' => $this->getBaseUri(),
                 'headers'  => [
