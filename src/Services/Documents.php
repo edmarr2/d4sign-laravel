@@ -9,18 +9,18 @@ class Documents extends Client
     public function changePasswordCode($documentKey, $keySigner, $email, $code)
     {
         return $this->post('documents/' . $documentKey . '/changepasswordcode', [
-            'email' => json_encode($email),
-            'password-code' => json_encode($code),
-            'key-signer' => json_encode($keySigner)
+            'email' => $email,
+            'password-code' => $code,
+            'key-signer' => $keySigner
         ]);
     }
 
     public function changeSmsNumber($documentKey, $keySigner, $email, $sms)
     {
         return $this->post('documents/' . $documentKey . '/changesmsnumber', [
-            'email' => json_encode($email),
-            'sms-number' => json_encode($sms),
-            'key-signer' => json_encode($keySigner)
+            'email' => $email,
+            'sms-number' => $sms,
+            'key-signer' => $keySigner
         ]);
     }
 
@@ -28,17 +28,17 @@ class Documents extends Client
     public function removeEmail($documentKey, $email, $key)
     {
         return $this->post('documents/' . $documentKey . '/removeemaillist', [
-            'email-signer' => json_encode($email),
-            'key-signer' => json_encode($key)
+            'email-signer' => $email,
+            'key-signer' => $key,
         ]);
     }
 
     public function changeEmail($documentKey, $email_before, $email_after, $key='')
     {
         return $this->post('documents/' . $documentKey . '/changeemail', [
-            'email-before' => json_encode($email_before),
-            'email-after' => json_encode($email_after),
-            'key-signer' => json_encode($key)
+            'email-before' => $email_before,
+            'email-after' => $email_after,
+            'key-signer' => $key,
         ]);
     }
 
@@ -61,29 +61,29 @@ class Documents extends Client
         ]);
     }
 
-    public function safe($safeKey, $uuid_folder = '', $page = 1)
+    public function safe($safeKey, $uuidFolder = '', $page = 1)
     {
-        return $this->get('documents/' . $safeKey . '/safe/' . $uuid_folder, [
+        return $this->get('documents/' . $safeKey . '/safe/' . $uuidFolder, [
             'pg' => $page
         ]);
     }
 
-    public function upload($uuid_safe, $filePath, $uuid_folder = '')
+    public function upload($uuidSafe, $filePath, $uuidFolder = '')
     {
-        if (! $uuid_safe) {
+        if (! $uuidSafe) {
             return 'UUID Safe not set.';
         }
-        return $this->_upload($uuid_safe, $filePath, $uuid_folder);
+        return $this->_upload($uuidSafe, $filePath, $uuidFolder);
     }
 
 
-    public function uploadBinary($uuid_safe, $base64_binary, $mime_type, $name, $uuid_folder = '')
+    public function uploadBinary($uuidSafe, $base64_binary, $mime_type, $name, $uuidFolder = '')
     {
-        return $this->post('documents/' . $uuid_safe . '/uploadbinary', [
+        return $this->post('documents/' . $uuidSafe . '/uploadbinary', [
             'base64_binary_file' => $base64_binary,
             'mime_type' => $mime_type,
             'name' => $name,
-            'uuid_folder' => json_encode($uuid_folder)
+            'uuid_folder' => ($uuidFolder)
         ]);
     }
 
@@ -104,33 +104,52 @@ class Documents extends Client
     public function cancel($documentKey, $comment = '')
     {
         return $this->post('documents/' .$documentKey . '/cancel', [
-            'comment' => json_encode($comment)
+            'comment' => ($comment)
         ]);
     }
 
     public function createList($documentKey, $signers)
     {
         return $this->post('documents/' . $documentKey . '/createlist', [
-            'signers' => json_encode($signers)
+            'signers' => ($signers)
         ]);
     }
 
-    public function makeDocumentByTemplate($documentKey, $name_document, $templates, $uuid_folder = '')
+    /**
+     * @param $documentKey
+     * @param $documentName
+     * @param $templates
+     * @param  string  $uuidFolder
+     *
+     * @return mixed
+     */
+    public function makeDocumentByTemplate($documentKey, $documentName, $templates, $uuidFolder = '')
     {
         return $this->post('documents/' . $documentKey . '/makedocumentbytemplate', [
-            'templates' =>  json_encode($templates),
-            'name_document'=> json_encode($name_document),
-            'uuid_folder'=> json_encode($uuid_folder)
+            'templates' =>  $templates,
+            'name_document'=> $documentName,
+            'uuid_folder'=> $uuidFolder
         ]);
     }
 
+    /**
+     * @param $documentKey
+     * @param $url
+     *
+     * @return mixed
+     */
     public function webhookAdd($documentKey, $url)
     {
         return $this->post('documents/' . $documentKey . '/webhooks', [
-            'url' => json_encode($url)
+            'url' => ($url)
         ]);
     }
 
+    /**
+     * @param $documentKey
+     *
+     * @return mixed
+     */
     public function webhookList($documentKey)
     {
         return $this->get('documents/' . $documentKey . '/webhooks');
@@ -139,35 +158,35 @@ class Documents extends Client
     public function sendToSigner($documentKey, $message = '', $workflow = '0', $skip_email = false)
     {
         return $this->post('documents/' . $documentKey . '/sendtosigner', [
-            'message' => json_encode($message),
-            'workflow' => json_encode($workflow),
-            'skip_email' => json_encode($skip_email)
+            'message' => $message,
+            'workflow' => $workflow,
+            'skip_email' => $skip_email
         ]);
     }
 
     public function addInfo($documentKey, $email = '', $display_name = '', $documentation = '', $birthday = '', $key='')
     {
         return $this->post('documents/' . $documentKey . '/addinfo', [
-            'key_signer' => json_encode($key),
-            'email' => json_encode($email),
-            'display_name' => json_encode($display_name),
-            'documentation' => json_encode($documentation),
-            'birthday' => json_encode($birthday)
+            'key_signer' => $key,
+            'email' => $email,
+            'display_name' => $display_name,
+            'documentation' => $documentation,
+            'birthday' => $birthday,
         ]);
     }
 
     public function resend($documentKey, $email, $key='')
     {
         return $this->post('documents/' . $documentKey . '/resend', [
-            "email" => json_encode($email),
-            "key_signer" => json_encode($key)
+            "email" => $email,
+            "key_signer" => $key
         ]);
     }
 
     public function getFileUrl($documentKey, $type)
     {
         return $this->post('documents/' . $documentKey . '/download', [
-            'type' => json_encode($type)
+            'type' => $type
         ]);
     }
 
@@ -175,11 +194,11 @@ class Documents extends Client
     /**
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    private function _upload($uuid_safe, $filePath, $uuid_folder = '')
+    private function _upload($uuidSafe, $filePath, $uuidFolder = '')
     {
         $this->client->request(
             'POST',
-            'documents/' . $uuid_safe . '/upload',
+            'documents/' . $uuidSafe . '/upload',
             [
                 'multipart' => [
                     [
@@ -188,7 +207,7 @@ class Documents extends Client
                     ],
                     [
                         'name'     => 'uuid_folder',
-                        'contents' => $uuid_folder,
+                        'contents' => $uuidFolder,
                     ]
                 ]
             ]
@@ -223,13 +242,13 @@ class Documents extends Client
         return $value;
     }
 
-    public function uploadHash($uuid_safe, $sha256, $sha512, $name, $uuid_folder = '')
+    public function uploadHash($uuidSafe, $sha256, $sha512, $name, $uuidFolder = '')
     {
-        return $this->post('documents/' . $uuid_safe . '/uploadhash', [
+        return $this->post('documents/' . $uuidSafe . '/uploadhash', [
             'sha256' => $sha256,
             'sha512' => $sha512,
             'name' => $name,
-            'uuid_folder' => json_encode($uuid_folder)
+            'uuid_folder' => $uuidFolder,
         ]);
     }
 }

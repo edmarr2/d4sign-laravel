@@ -4,8 +4,13 @@ namespace Edmarr2\D4sign\Services;
 
 class Safes extends Client
 {
-    public function find($safeKey = '')
+    /**
+     * @param  string  $safeKey
+     *
+     * @return mixed
+     */
+    public function find($uuidSafe = '')
     {
-        return $this->get('safes/' . $safeKey);
+        return $this->get('safes/' . $uuidSafe);
     }
 }
