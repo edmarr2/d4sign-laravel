@@ -196,7 +196,7 @@ class Documents extends Client
      */
     private function _upload($uuidSafe, $filePath, $uuidFolder = '')
     {
-        $this->client->request(
+        return $this->client->request(
             'POST',
             'documents/' . $uuidSafe . '/upload',
             [
